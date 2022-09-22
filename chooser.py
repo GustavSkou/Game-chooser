@@ -6,6 +6,7 @@ medium = 2
 long = 3
 forever = 4
 type_answer = 1
+genre_answer = 1
 length_answer = 1
 
 # Creating list of lists
@@ -35,14 +36,26 @@ games = [["Escape from tarkov", "multiplayer", "pvpve", long],
     ["War thunder", "multiplayer", "pvp", medium],
     ["No man's sky", "singleplayer", "pve", long]]
 
-game_types = ["pvp", "pve", "pvpve", "driving"]         # List of the type of games, item(2) in games
+game_types = ["multiplayer", "singleplayer"]              # List of the type of games, item(1) in games
+game_genres = ["pvp", "pve", "pvpve", "driving"]          # List of the genre of games, item(2) in games
 
 # input type
-print("What kind of game would you like to play (pvp, pve, pvpve, driving)")
+print("would you like to play multiplayer or singleplayer")
 while type_answer == 1:
     type = input()
     if type in game_types:
         type_answer = 0
+    else:
+        print("try again")
+
+# input genre
+print("What kind of game would you like to play (pvp, pve, pvpve, driving)")
+while genre_answer == 1:
+    genre = input()
+    if type == "singleplayer" and genre == "pvp" or type == "singleplayer" and genre == "pvpve":    # game can't be both single player and pvp, sooo NO
+        print("game type and genre, doesn't match. Try again")
+    elif genre in game_genres:
+        genre_answer = 0
     else:
         print("try again")
 
@@ -67,7 +80,7 @@ while length_answer == 1:
 
 to_play = []                                            # Create an emtpy list for the games to play
 for item in games:
-    if item[2] == type and item[3] == length:
+    if item[1] == type and item[2] == genre and item[3] == length:
         to_play.append(item[0])                         # Add games to the to_play list
 to_play_size = len(to_play)                             # Check how many corresponding games there is
 
@@ -76,7 +89,7 @@ if to_play_size >= 2:                                   # If the list contains m
     print(to_play[int(ran)])                            # Uses random number to print
 elif to_play_size == 0:                                 # If there wasn't any corresponding games
     for item in games:
-        if item[2] == type and item[3] == length-1 or item[2] == type and item[3] == length+1:  # Check if theres is corresponding games to the type and the length +- 1
+        if item[2] == genre and item[3] == length-1 or item[2] == genre and item[3] == length+1:  # Check if theres is corresponding games to the genre and the length +- 1
             to_play.append(item[0])
     to_play_size = len(to_play)
     ran = random.uniform(0, to_play_size)               # Gets random number to the size of how many games were found
