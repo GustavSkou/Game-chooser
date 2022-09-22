@@ -5,8 +5,8 @@ short = 1
 medium = 2
 long = 3
 forever = 4
-y = 1
-x = 1
+type_answer = 1
+length_answer = 1
 
 # Creating list of lists
     # each row's item[0] is being represented by 3 categories
@@ -18,35 +18,50 @@ games = [["Escape from tarkov", "multiplayer", "pvpve", long],
     ["Among us", "multiplayer", "pvp", short],
     ["Rainbow six siege", "multiplayer", "pvp", medium],
     ["Phasmophobia", "multiplayer", "pve", medium],
-    ["Euro truck simulator 2", "multiplayer", "driving", long]]
+    ["Euro truck simulator 2", "multiplayer", "driving", long],
+    ["CSGO", "multiplayer", "pvp", medium],
+    ["Cities: Skylines", "Singleplayer", "pve", forever],
+    ["Freedom Fighters", "Singleplayer", "pve", medium],
+    ["Hunt: Showdown", "Multiplayer", "pvpve", medium],
+    ["Rust", "multiplayer", "pvpve", long],
+    ["Arma 3", "multiplayer", "pvp", long],
+    ["Castle Story", "singleplayer", "pve", medium],
+    ["Apex legends", "multiplayer", "pvp", medium],
+    ["PUBG", "multiplayer", "pvp", medium],
+    ["Terraria", "singleplayer", "pve", long],
+    ["Subnautica", "singleplayer", "pve", medium],
+    ["Stormworks", "singleplayer", "pve", long],
+    ["Worms", "multiplayer", "pvp", medium],
+    ["War thunder", "multiplayer", "pvp", medium],
+    ["No man's sky", "singleplayer", "pve", long]]
 
 game_types = ["pvp", "pve", "pvpve", "driving"]         # List of the type of games, item(2) in games
 
 # input type
 print("What kind of game would you like to play (pvp, pve, pvpve, driving)")
-while y == 1:
+while type_answer == 1:
     type = input()
     if type in game_types:
-        y = 0
+        type_answer = 0
     else:
         print("try again")
 
 # input length
 print("For how long do you want to play (short, medium, long, forever)")
-while x == 1:
+while length_answer == 1:
     length = input()
     if length == "short":
         length = 1
-        x = 0
+        length_answer = 0
     elif length == "medium":
         length = 2
-        x = 0
+        length_answer = 0
     elif length == "long":
         length = 3
-        x = 0
+        length_answer = 0
     elif length == "forever":
         length = 4
-        x = 0
+        length_answerx = 0
     else:
         print("try again")
 
